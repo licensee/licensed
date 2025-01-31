@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Set up Ruby
-      uses: ruby/setup-ruby@4a9ddd6f338a97768b8006bf671dfbad383215f4
+      uses: ruby/setup-ruby@2654679fe7f7c29875c669398a8ec0791b8a64a1
 
     - name: Publish to GPR
       run: |
