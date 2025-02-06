@@ -1,10 +1,11 @@
 ---
 name: logger
-version: 1.6.1
+version: 1.6.5
 type: bundler
 summary: Provides a simple logging utility for outputting messages.
 homepage: https://github.com/ruby/logger
 license: other
+review_changed_license: true
 licenses:
 - sources: COPYING
   text: |
@@ -64,4 +65,6 @@ licenses:
        IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
        WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
        PURPOSE.
+- sources: README.md
+  text: The gem is available as open source under the terms of the [BSD-2-Clause](BSDL).
 notices: []

@@ -1,6 +1,6 @@
 ---
 name: nokogiri
-version: 1.16.7
+version: 1.18.2
 type: bundler
 summary: Nokogiri (鋸) makes it easy and painless to work with XML and HTML from Ruby.
 homepage: https://nokogiri.org
@@ -24,9 +24,9 @@ licenses:
     \"platform release\" of Nokogiri.\n\n<!-- regenerate TOC with `rake format:toc`
     -->\n\n<!-- toc -->\n\n- [Platform Releases](#platform-releases)\n  * [Default
     platform release (\"ruby\")](#default-platform-release-ruby)\n  * [Native LinuxⓇ
-    platform releases (\"x86_64-linux\", \"arm64-linux\", \"aarch64-linux\", and \"arm-linux\")](#native-linux%E2%93%A1-platform-releases-x86_64-linux-arm64-linux-aarch64-linux-and-arm-linux)\n
+    platform releases (\"x86_64-linux\", \"aarch64-linux\", and \"arm-linux\")](#native-linux%E2%93%A1-platform-releases-x86_64-linux-aarch64-linux-and-arm-linux)\n
     \ * [Native Darwin (macOSⓇ) platform releases (\"x86_64-darwin\" and \"arm64-darwin\")](#native-darwin-macos%E2%93%A1-platform-releases-x86_64-darwin-and-arm64-darwin)\n
-    \ * [Native WindowsⓇ platform releases (\"x86-mingw32\" and \"x64-mingw32\")](#native-windows%E2%93%A1-platform-releases-x86-mingw32-and-x64-mingw32)\n
+    \ * [Native WindowsⓇ platform releases (\"x64-mingw-ucrt\")](#native-windows%E2%93%A1-platform-releases-x64-mingw-ucrt)\n
     \ * [JavaⓇ (JRuby) platform release (\"java\")](#java%E2%93%A1-jruby-platform-release-java)\n-
     [Appendix: Dependencies' License Texts](#appendix-dependencies-license-texts)\n
     \ * [libgumbo](#libgumbo)\n  * [libxml2](#libxml2)\n  * [libxslt](#libxslt)\n
@@ -49,12 +49,12 @@ licenses:
     dependencies in source form:\n\n* [libxml2](#libxml2)\n* [libxslt](#libxslt)\n*
     [libgumbo](#libgumbo)\n\nThis distribution can be identified by inspecting the
     included Gem::Specification, which will have the value \"ruby\" for its \"platform\"
-    attribute.\n\n\n### Native LinuxⓇ platform releases (\"x86_64-linux\", \"arm64-linux\",
-    \"aarch64-linux\", and \"arm-linux\")\n\nThe native LinuxⓇ platform release distributes
-    the following dependencies in source form:\n\n* [libxml2](#libxml2)\n* [libxslt](#libxslt)\n*
+    attribute.\n\n\n### Native LinuxⓇ platform releases (\"x86_64-linux\", \"aarch64-linux\",
+    and \"arm-linux\")\n\nThe native LinuxⓇ platform release distributes the following
+    dependencies in source form:\n\n* [libxml2](#libxml2)\n* [libxslt](#libxslt)\n*
     [libgumbo](#libgumbo)\n* [zlib](#zlib)\n\nThis distribution can be identified
     by inspecting the included Gem::Specification, which will have a value similar
-    to \"x86_64-linux\" or \"arm64-linux\" for its \"platform.cpu\" attribute.\n\n\n###
+    to \"x86_64-linux\" or \"aarch64-linux\" for its \"platform.cpu\" attribute.\n\n\n###
     Native Darwin (macOSⓇ) platform releases (\"x86_64-darwin\" and \"arm64-darwin\")\n\nThe
     native Darwin platform release distributes the following dependencies in source
     form:\n\n* [libxml2](#libxml2)\n* [libxslt](#libxslt)\n* [libgumbo](#libgumbo)\n*
@@ -62,14 +62,14 @@ licenses:
     by inspecting the included Gem::Specification, which will have a value similar
     to \"x86_64-darwin\" or \"arm64-darwin\" for its \"platform.cpu\" attribute. Darwin
     is also known more familiarly as \"OSX\" or \"macOSⓇ\" and is the operating system
-    for many AppleⓇ computers.\n\n\n### Native WindowsⓇ platform releases (\"x86-mingw32\"
-    and \"x64-mingw32\")\n\nThe native WindowsⓇ platform release distributes the following
-    dependencies in source form:\n\n* [libxml2](#libxml2)\n* [libxslt](#libxslt)\n*
-    [libgumbo](#libgumbo)\n* [zlib](#zlib)\n* [libiconv](#libiconv)\n\nThis distribution
-    can be identified by inspecting the included Gem::Specification, which will have
-    a value similar to \"x64-mingw32\" or \"x86-mingw32\" for its \"platform.cpu\"
-    attribute.\n\n\n### JavaⓇ (JRuby) platform release (\"java\")\n\nThe Java platform
-    release distributes the following dependencies as compiled jar files:\n\n* [isorelax:isorelax](#isorelaxisorelax)\n*
+    for many AppleⓇ computers.\n\n\n### Native WindowsⓇ platform releases (\"x64-mingw-ucrt\")\n\nThe
+    native WindowsⓇ platform release distributes the following dependencies in source
+    form:\n\n* [libxml2](#libxml2)\n* [libxslt](#libxslt)\n* [libgumbo](#libgumbo)\n*
+    [zlib](#zlib)\n* [libiconv](#libiconv)\n\nThis distribution can be identified
+    by inspecting the included Gem::Specification, which will have a value similar
+    to \"x64-mingw-ucrt\" for its \"platform.cpu\" attribute.\n\n\n### JavaⓇ (JRuby)
+    platform release (\"java\")\n\nThe Java platform release distributes the following
+    dependencies as compiled jar files:\n\n* [isorelax:isorelax](#isorelaxisorelax)\n*
     [net.sf.saxon:Saxon-HE](#netsfsaxonsaxon-he)\n* [net.sourceforge.htmlunit:neko-htmlunit](#netsourceforgehtmlunitneko-htmlunit)\n*
     [nu.validator:jing](#nuvalidatorjing)\n* [org.nokogiri:nekodtd](#orgnokogirinekodtd)\n*
     [xalan:serializer and xalan:xalan](#xalanserializer-and-xalanxalan)\n* [xerces:xercesImpl](#xercesxercesimpl)\n*

@@ -1,6 +1,6 @@
 ---
 name: rugged
-version: 1.7.2
+version: 1.9.0
 type: bundler
 summary: Rugged is a Ruby binding to the libgit2 linkable library
 homepage: https://github.com/libgit2/rugged
