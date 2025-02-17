@@ -44,7 +44,7 @@ GEM
       net-http (>= 0.5.0)
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
-    json (2.9.1)
+    json (2.10.1)
     licensee (9.18.0)
       dotenv (>= 2, < 4)
       octokit (>= 4.20, < 10.0)
