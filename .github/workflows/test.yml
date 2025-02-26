@@ -343,9 +343,7 @@ jobs:
     needs: core
     strategy:
       matrix:
-        # TODO: re-enable 3.x when it's working again
-        # python: [ '3.8', '3.10', '3.x' ]
-        python: [ '3.8', '3.10' ]
+        python: [ '3.8', '3.10', '3.x' ]
     steps:
     - uses: actions/checkout@v4
     - name: Setup python
