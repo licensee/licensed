@@ -38,5 +38,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest-hooks", "~> 1.5"
   spec.add_development_dependency "mocha", "~> 2.0"
   spec.add_development_dependency "rubocop-github", "~> 0.20"
-  spec.add_development_dependency "byebug", "~> 11.1"
+  spec.add_development_dependency "byebug", "~> 12.0"
 end
