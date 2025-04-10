@@ -403,7 +403,7 @@ jobs:
     steps:
     - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
     - name: Setup Swift
-      uses: swift-actions/setup-swift@d4537ff835c9778c934e48f78639e270edd5839e # v2.2.0
+      uses: swift-actions/setup-swift@682457186b71c25a884c45c06f859febbe259240 # v2.3.0
       with:
         swift-version: ${{ matrix.swift }}
     - name: Set up Ruby
