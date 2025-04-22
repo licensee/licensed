@@ -395,7 +395,7 @@ jobs:
       run: script/test pnpm
 
   swift:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     needs: core
     strategy:
       matrix:
