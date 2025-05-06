@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    licensed (5.0.3)
+    licensed (5.0.4)
       csv (~> 3.3)
       json (~> 2.6)
       licensee (~> 9.16)
