@@ -13,3 +13,4 @@ backports.shutil-get-terminal-size==1.0.0
 datadog==0.44.0
 nbconvert==7.1.0
 scipy==1.9.2
+json5==0.12.0

@@ -7,8 +7,6 @@ require "parallel"
 module Licensed
   module Sources
     class Pip < Source
-      PACKAGE_INFO_SEPARATOR = "\n---\n"
-
       def enabled?
         !pip_command.empty? && Licensed::Shell.tool_available?(pip_command.join(""))
       end
@@ -54,8 +52,12 @@ module Licensed
       # using `pip list` to determine what packages are used and `pip show`
       # to gather package information
       def packages
-        all_packages = pip_show_command(package_names)
-        all_packages.split(PACKAGE_INFO_SEPARATOR).reduce([]) do |accum, val|
+        # Handle case where package show command actually includes the separator inside the package info
+        # This is a workaround for the fact that pip show does not have a way to specify a custom separator
+        # Not counting on the package separator here but instead doing them one by one.
+        all_packages = Parallel.map(package_names, in_threads: 4) { |package| pip_show_command(package) }
+
+        all_packages.reduce([]) do |accum, val|
           accum << parse_package_info(val)
         end
       end
@@ -89,8 +91,8 @@ module Licensed
       end
 
       # Returns the output from `pip show <package> <package> ...`
-      def pip_show_command(packages)
-        Licensed::Shell.execute(*pip_command, "--disable-pip-version-check", "show", *packages)
+      def pip_show_command(package)
+        Licensed::Shell.execute(*pip_command, "--disable-pip-version-check", "show", package)
       end
 
       def virtual_env_dir
