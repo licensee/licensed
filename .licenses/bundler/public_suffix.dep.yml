@@ -1,6 +1,6 @@
 ---
 name: public_suffix
-version: 6.0.1
+version: 6.0.2
 type: bundler
 summary: Domain name parser based on the Public Suffix List.
 homepage: https://simonecarletti.com/code/publicsuffix-ruby
@@ -8,7 +8,7 @@ license: mit
 licenses:
 - sources: LICENSE.txt
   text: |
-    Copyright (c) 2009-2024 Simone Carletti <weppos@weppos.net>
+    Copyright (c) 2009-2025 Simone Carletti <weppos@weppos.net>
 
     MIT License
 
@@ -32,7 +32,7 @@ licenses:
     WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - sources: README.md
   text: |-
-    Copyright (c) 2009-2024 Simone Carletti. This is Free Software distributed under the MIT license.
+    Copyright (c) 2009-2025 Simone Carletti. This is Free Software distributed under the MIT license.
 
     The [Public Suffix List source](https://publicsuffix.org/list/) is subject to the terms of the Mozilla Public License, v. 2.0.
 notices: []

@@ -1,6 +1,6 @@
 ---
 name: logger
-version: 1.6.6
+version: 1.7.0
 type: bundler
 summary: Provides a simple logging utility for outputting messages.
 homepage: https://github.com/ruby/logger
