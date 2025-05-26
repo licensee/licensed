@@ -8,8 +8,27 @@ updates:
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: daily
+      interval: weekly
+      day: "monday"
+      time: "08:00"
+      timezone: "Etc/UTC"
+    allow:
+      - dependency-type: all
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
   - package-ecosystem: bundler
     directory: /
     schedule:
       interval: weekly
+      day: "monday"
+      time: "08:00"
+      timezone: "Etc/UTC"
+    allow:
+      - dependency-type: all
+    groups:
+      bundler:
+        patterns:
+          - "*"
