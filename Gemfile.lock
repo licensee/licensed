@@ -47,7 +47,7 @@ GEM
       net-http (>= 0.5.0)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
-    json (2.11.3)
+    json (2.12.2)
     language_server-protocol (3.17.0.4)
     licensee (9.18.0)
       dotenv (>= 2, < 4)
