@@ -27,6 +27,15 @@ jobs:
           chmod 0600 $HOME/.gem/credentials
           gem build *.gemspec
 
+      - name: Set commit message
+        id: commit
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "message=Auto-update license files for PR #${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
+          else
+            echo "message=Auto-update license files" >> $GITHUB_OUTPUT
+          fi
+
       - uses: licensee/licensed-ci@98eef7c23bcf8211e108781a9594e969da913e89 # v1.11.2
         with:
           # override the command to use licensed built from this repo
@@ -48,3 +57,5 @@ jobs:
 
           # see https://github.com/github/licensed-ci for more details
           workflow: branch
+
+          commit_message: ${{ steps.commit.outputs.message }}
