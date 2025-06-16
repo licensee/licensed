@@ -1,6 +1,6 @@
 ---
 name: faraday-net_http
-version: 3.4.0
+version: 3.4.1
 type: bundler
 summary: Faraday adapter for Net::HTTP
 homepage: https://github.com/lostisland/faraday-net_http
