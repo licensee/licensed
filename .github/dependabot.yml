@@ -1,34 +1,37 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
-
 version: 2
+
+multi-ecosystem-groups:
+  all:
+    schedule:
+      interval: weekly
+      day: "monday"
+      time: "08:00"
+      timezone: "Etc/UTC"
+
 updates:
   - package-ecosystem: github-actions
     directory: /
-    schedule:
-      interval: weekly
-      day: "monday"
-      time: "08:00"
-      timezone: "Etc/UTC"
+    multi-ecosystem-group: all
+    patterns:
+      - "*"
     allow:
       - dependency-type: all
-    groups:
-      github-actions:
-        patterns:
-          - "*"
+    cooldown:
+      default-days: 1
+      include:
+        - "*"
 
   - package-ecosystem: bundler
     directory: /
-    schedule:
-      interval: weekly
-      day: "monday"
-      time: "08:00"
-      timezone: "Etc/UTC"
+    multi-ecosystem-group: all
+    patterns:
+      - "*"
     allow:
       - dependency-type: all
-    groups:
-      bundler:
-        patterns:
-          - "*"
+    cooldown:
+      default-days: 1
+      semver-major-days: 14
+      semver-minor-days: 7
+      semver-patch-days: 1
+      include:
+        - "*"
