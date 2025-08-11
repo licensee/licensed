@@ -62,7 +62,7 @@ jobs:
         ghc-version: ${{ matrix.ghc }}
         cabal-version: ${{ matrix.cabal }}
     - name: cache cabal dependencies
-      uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+      uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
       with:
         path: |
           ~/.cabal/packages
@@ -87,7 +87,7 @@ jobs:
     - name: Setup Rust toolchain
       run: rustup default stable
     - name: cache cargo dependencies
-      uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+      uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
       with:
         path: |
           ~/.cargo/registry
@@ -379,7 +379,7 @@ jobs:
       shell: bash
       run: |
         echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-    - uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+    - uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
       name: Setup pnpm cache
       with:
         path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
@@ -412,7 +412,7 @@ jobs:
   #     uses: ruby/setup-ruby@2a7b30092b0caf9c046252510f9273b4875f3db9 # v1.254.0
   #     with:
   #       bundler-cache: true
-  #   - uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+  #   - uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
   #     name: cache spm dependencies
   #     with:
   #       path: .build
