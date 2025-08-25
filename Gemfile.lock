@@ -15,7 +15,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (7.2.2.1)
+    activesupport (7.2.2.2)
       base64
       benchmark (>= 0.3)
       bigdecimal
@@ -82,10 +82,10 @@ GEM
     rack (3.2.0)
     rainbow (3.1.1)
     rake (13.3.0)
-    regexp_parser (2.11.1)
+    regexp_parser (2.11.2)
     reverse_markdown (3.0.0)
       nokogiri
-    rubocop (1.79.2)
+    rubocop (1.80.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -107,7 +107,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-rails (2.32.0)
+    rubocop-rails (2.33.3)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
@@ -125,7 +125,7 @@ GEM
     tomlrb (2.0.3)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    unicode-display_width (3.1.4)
+    unicode-display_width (3.1.5)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
     uri (1.0.3)
