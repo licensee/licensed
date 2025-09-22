@@ -65,7 +65,7 @@ GEM
       ruby2_keywords (>= 0.0.5)
     net-http (0.6.0)
       uri
-    nokogiri (1.18.9)
+    nokogiri (1.18.10)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     octokit (9.2.0)
@@ -82,7 +82,7 @@ GEM
     rack (3.2.1)
     rainbow (3.1.1)
     rake (13.3.0)
-    regexp_parser (2.11.2)
+    regexp_parser (2.11.3)
     reverse_markdown (3.0.0)
       nokogiri
     rubocop (1.80.2)
