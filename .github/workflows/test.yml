@@ -57,7 +57,7 @@ jobs:
       with:
         bundler-cache: true
     - name: Setup Haskell
-      uses: haskell-actions/setup@7909071ceec0344debcc968c6c7a96a52e8dd0d7 # v2.8.1
+      uses: haskell-actions/setup@82e8b5066385702e477d9dc98f287070493e8abd # v2.8.2
       with:
         ghc-version: ${{ matrix.ghc }}
         cabal-version: ${{ matrix.cabal }}
