@@ -1,6 +1,6 @@
 ---
 name: faraday
-version: 2.13.4
+version: 2.14.0
 type: bundler
 summary: HTTP/REST API client library.
 homepage: https://lostisland.github.io/faraday
