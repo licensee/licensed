@@ -47,7 +47,7 @@ GEM
       net-http (>= 0.5.0)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
-    json (2.15.0)
+    json (2.15.1)
     language_server-protocol (3.17.0.5)
     licensee (9.18.0)
       dotenv (>= 2, < 4)
@@ -76,10 +76,10 @@ GEM
       ast (~> 2.4.1)
       racc
     pathname-common_prefix (0.0.2)
-    prism (1.5.1)
+    prism (1.5.2)
     public_suffix (6.0.2)
     racc (1.8.1)
-    rack (3.2.1)
+    rack (3.2.3)
     rainbow (3.1.1)
     rake (13.3.0)
     regexp_parser (2.11.3)
@@ -128,7 +128,7 @@ GEM
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.1.0)
-    uri (1.0.3)
+    uri (1.0.4)
 
 PLATFORMS
   ruby
