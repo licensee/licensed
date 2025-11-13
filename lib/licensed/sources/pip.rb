@@ -68,7 +68,7 @@ module Licensed
         @package_names ||= begin
           JSON.parse(pip_list_command).map { |package| package["name"] }
         rescue JSON::ParserError => e
-          message = "Licensed was unable to parse the output from 'npm list'. JSON Error: #{e.message}"
+          message = "Licensed was unable to parse the output from 'pip list'. JSON Error: #{e.message}"
           raise Licensed::Sources::Source::Error, message
         end
       end
