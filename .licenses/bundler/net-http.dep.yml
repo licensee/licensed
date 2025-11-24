@@ -1,6 +1,6 @@
 ---
 name: net-http
-version: 0.7.0
+version: 0.8.0
 type: bundler
 summary: HTTP client api for Ruby.
 homepage: https://github.com/ruby/net-http
