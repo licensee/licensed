@@ -1,6 +1,6 @@
 ---
 name: reverse_markdown
-version: 3.0.0
+version: 3.0.1
 type: bundler
 summary: Convert html code into markdown.
 homepage: http://github.com/xijo/reverse_markdown
