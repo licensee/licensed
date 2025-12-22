@@ -18,7 +18,7 @@ jobs:
       - name: Install Bower
         run: npm install -g bower
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+        uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
         with:
           bundler-cache: true
       - name: Set up fixtures
@@ -35,7 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+        uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
         with:
           bundler: ${{ matrix.bundler }}
           bundler-cache: true
@@ -53,11 +53,11 @@ jobs:
     steps:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+        uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
         with:
           bundler-cache: true
       - name: Setup Haskell
-        uses: haskell-actions/setup@82e8b5066385702e477d9dc98f287070493e8abd # v2.8.2
+        uses: haskell-actions/setup@0512451d82f3ca8c147db62e30464e7c4ca63d30 # v2.9.1
         with:
           ghc-version: ${{ matrix.ghc }}
           cabal-version: ${{ matrix.cabal }}
@@ -81,7 +81,7 @@ jobs:
     steps:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+        uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
         with:
           bundler-cache: true
       - name: Setup Rust toolchain
@@ -105,7 +105,7 @@ jobs:
     steps:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+        uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
         with:
           bundler-cache: true
       - name: Set up fixtures
@@ -126,7 +126,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+        uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
         with:
           bundler-cache: true
       - name: Set up fixtures
@@ -142,7 +142,7 @@ jobs:
     steps:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+        uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
         with:
           ruby-version: ${{matrix.ruby}}
           bundler-cache: true
@@ -164,7 +164,7 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+        uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
         with:
           bundler-cache: true
 
@@ -190,7 +190,7 @@ jobs:
           cache: true
           cache-dependency-path: test/fixtures/go/src/test/go.sum
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+        uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
         with:
           bundler-cache: true
       - name: Set up fixtures
@@ -213,7 +213,7 @@ jobs:
   #   steps:
   #   - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
   #   - name: Set up Ruby
-  #     uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+  #     uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
   #     with:
   #       bundler-cache: true
   #   - name: Set up Java
@@ -237,7 +237,7 @@ jobs:
     steps:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+        uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
         with:
           bundler-cache: true
       - name: Run tests
@@ -257,7 +257,7 @@ jobs:
           otp-version: ${{matrix.otp}}
           elixir-version: ${{matrix.elixir}}
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+        uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
         with:
           bundler-cache: true
       - name: Set up fixtures
@@ -280,7 +280,7 @@ jobs:
           cache: npm
           cache-dependency-path: test/fixtures/npm/package-lock.json
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+        uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
         with:
           bundler-cache: true
       - name: Set up fixtures
@@ -301,7 +301,7 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet }}
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+        uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
         with:
           bundler-cache: true
       - name: Set up fixtures
@@ -324,7 +324,7 @@ jobs:
           architecture: x64
           cache: pip
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+        uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
         with:
           bundler-cache: true
       - name: Install virtualenv
@@ -351,7 +351,7 @@ jobs:
           architecture: x64
           cache: pipenv
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+        uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
         with:
           bundler-cache: true
       - name: Install pipenv
@@ -388,7 +388,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+        uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
         with:
           bundler-cache: true
       - name: Set up fixtures
@@ -410,7 +410,7 @@ jobs:
   #     with:
   #       swift-version: ${{ matrix.swift }}
   #   - name: Set up Ruby
-  #     uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+  #     uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
   #     with:
   #       bundler-cache: true
   #   - uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
@@ -445,7 +445,7 @@ jobs:
         env:
           YARN_VERSION: ${{ matrix.yarn_version }}
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+        uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
         with:
           bundler-cache: true
       - name: Set up fixtures
@@ -467,7 +467,7 @@ jobs:
       - name: Install Yarn
         run: npm install -g yarn
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085 # v1.270.0
+        uses: ruby/setup-ruby@d354de180d0c9e813cfddfcbdc079945d4be589b # v1.275.0
         with:
           bundler-cache: true
       - name: Set up fixtures
