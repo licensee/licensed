@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
 
-      - uses: ruby/setup-ruby@ae195bbe749a7cef685ac729197124a48305c1cb # v1.276.0
+      - uses: ruby/setup-ruby@4c24fa5ec04b2e79eb40571b1cee2a0d2b705771 # v1.278.0
         with:
           bundler-cache: true
 
@@ -38,7 +38,7 @@ jobs:
           fi
 
       - id: licensed_ci
-        uses: licensee/licensed-ci@e9618514d69bcd4e005d5307da079659c2212407 # v1.12.0
+        uses: licensee/licensed-ci@f1f6507544a9db25b0f4730230bfdf67a9c1bc90 # v1.12.1
         with:
           # override the command to use licensed built from this repo
           command: bundle exec licensed
