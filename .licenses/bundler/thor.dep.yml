@@ -1,9 +1,9 @@
 ---
 name: thor
-version: 1.4.0
+version: 1.5.0
 type: bundler
 summary: Thor is a toolkit for building powerful command-line interfaces.
-homepage: http://whatisthor.com/
+homepage: https://github.com/rails/thor
 license: mit
 licenses:
 - sources: LICENSE.md
