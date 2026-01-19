@@ -15,6 +15,7 @@ reviewed:
     - csv
     - logger
     - net-http
+    - ostruct
     - racc
     - uri
 
