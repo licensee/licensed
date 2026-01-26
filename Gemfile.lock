@@ -76,14 +76,14 @@ GEM
       ast (~> 2.4.1)
       racc
     pathname-common_prefix (0.0.2)
-    prism (1.7.0)
+    prism (1.8.0)
     public_suffix (6.0.2)
     racc (1.8.1)
     rack (3.2.4)
     rainbow (3.1.1)
     rake (13.3.1)
     regexp_parser (2.11.3)
-    reverse_markdown (3.0.1)
+    reverse_markdown (3.0.2)
       nokogiri
     rubocop (1.82.1)
       json (~> 2.3)
