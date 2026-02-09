@@ -39,7 +39,7 @@ GEM
     csv (3.3.5)
     dotenv (3.2.0)
     drb (2.2.3)
-    faraday (2.14.0)
+    faraday (2.14.1)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -47,7 +47,7 @@ GEM
       net-http (~> 0.5)
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
-    json (2.18.0)
+    json (2.18.1)
     language_server-protocol (3.17.0.5)
     licensee (9.18.0)
       dotenv (>= 2, < 4)
@@ -76,7 +76,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pathname-common_prefix (0.0.2)
-    prism (1.8.0)
+    prism (1.9.0)
     public_suffix (6.0.2)
     racc (1.8.1)
     rack (3.2.4)
@@ -85,7 +85,7 @@ GEM
     regexp_parser (2.11.3)
     reverse_markdown (3.0.2)
       nokogiri
-    rubocop (1.82.1)
+    rubocop (1.84.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -93,7 +93,7 @@ GEM
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 2.9.3, < 3.0)
-      rubocop-ast (>= 1.48.0, < 2.0)
+      rubocop-ast (>= 1.49.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
     rubocop-ast (1.49.0)
