@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "parallel", "~> 1.22"
   spec.add_dependency "reverse_markdown", ">= 2.1", "< 4.0"
   spec.add_dependency "json", "~> 2.6"
+  spec.add_dependency "ostruct", "~> 0.6.3"
 
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "minitest", "~> 5.17"
