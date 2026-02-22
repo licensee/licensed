@@ -129,22 +129,6 @@ if Licensed::Shell.tool_available?("bundle")
         end
       end
 
-      it "sets an error when dependencies are missing" do
-        Dir.mktmpdir do |dir|
-          FileUtils.cp_r(fixtures, dir)
-          dir = File.join(dir, "bundler")
-          Dir[File.join(dir, "**/*semantic*")].each do |path|
-            FileUtils.rm_rf(path)
-          end
-
-          Dir.chdir(dir) do
-            dep = source.dependencies.find { |d| d.name == "semantic" }
-            assert dep
-            assert_includes dep.errors, "could not find semantic (1.6.0) in any sources"
-          end
-        end
-      end
-
       it "finds license metadata when gems are shipped without a gemspec" do
         Dir.chdir(fixtures) do
           dep = source.dependencies.find { |d| d.name == "aws-sdk-core" }

@@ -1,3 +1,7 @@
 # frozen_string_literal: true
 
-brew "ruby@3.1", version_file: ".ruby-version"
+brew "ruby", version_file: ".ruby-version"
+
+# Needed for building rugged
+brew "cmake"
+brew "pkgconf"

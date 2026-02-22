@@ -81,7 +81,7 @@ GEM
     prism (1.9.0)
     public_suffix (6.0.2)
     racc (1.8.1)
-    rack (3.2.4)
+    rack (3.2.5)
     rainbow (3.1.1)
     rake (13.3.1)
     regexp_parser (2.11.3)
@@ -145,4 +145,4 @@ DEPENDENCIES
   rubocop-github (~> 0.20)
 
 BUNDLED WITH
-   2.3.26
+  4.0.3
