@@ -59,6 +59,8 @@ end
 
 module Bundler
   class LazySpecification
-    prepend ::Licensed::Bundler::LazySpecification
+    if Gem::Version.new(::Bundler::VERSION) < Gem::Version.new("4.0.0")
+      prepend ::Licensed::Bundler::LazySpecification
+    end
   end
 end
