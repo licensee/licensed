@@ -1,6 +1,34 @@
 # frozen_string_literal: true
 require "test_helper"
+require "fileutils"
 require "tmpdir"
+
+describe Licensed::Sources::Pip do
+  it "finds lowercase dist-info directories for mixed-case package names" do
+    Dir.mktmpdir do |dir|
+      dist_info = File.join(dir, "pyjwt-2.12.0.dist-info")
+      licenses = File.join(dist_info, "licenses")
+      FileUtils.mkdir_p(licenses)
+
+      config = Licensed::AppConfiguration.new({
+        "source_path" => Dir.pwd,
+        "python" => { "virtual_env_dir" => "test/fixtures/pip/venv" }
+      })
+      source = Licensed::Sources::Pip.new(config)
+
+      path = source.send(
+        :package_license_location,
+        {
+          "Name" => "PyJWT",
+          "Version" => "2.12.0",
+          "Location" => dir
+        }
+      )
+
+      assert_equal licenses, path
+    end
+  end
+end
 
 if Licensed::Shell.tool_available?("pip")
   describe Licensed::Sources::Pip do
