@@ -39,13 +39,22 @@ module Licensed
       # Returns the location of license files in the package, checking for the inclusion of a new `license_files`
       # folder per https://peps.python.org/pep-0639/
       def package_license_location(package)
-        dist_info = File.join(package["Location"], package["Name"].gsub("-", "_") + "-" + package["Version"] + ".dist-info")
+        dist_info = package_dist_info_path(package)
 
         license_path = ["license_files", "licenses"]
           .map { |directory| File.join(dist_info, directory) }
           .find { |path| File.exist?(path) }
 
         license_path || dist_info
+      end
+
+      # Returns the package's .dist-info path, matching case-insensitively to support
+      # filesystems where installed wheel metadata directories may be lowercase.
+      def package_dist_info_path(package)
+        expected = "#{package["Name"].tr("-", "_")}-#{package["Version"]}.dist-info".downcase
+        dist_infos = Dir.glob(File.join(package["Location"], "*.dist-info"))
+        dist_infos.find { |path| File.basename(path).downcase == expected } ||
+          File.join(package["Location"], "#{package["Name"].tr("-", "_")}-#{package["Version"]}.dist-info")
       end
 
       # Returns parsed information for all packages used by the project,
