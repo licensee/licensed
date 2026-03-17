@@ -123,7 +123,7 @@ module Licensed
       # Returns the package homepage from pip package metadata
       def homepage(package)
         home_page = package["Home-page"]
-        return home_page if home_page.is_a?(String) && !home_page.empty?
+        return home_page unless home_page.to_s.empty?
 
         homepage_from_project_urls(package["Project-URL"] || package["Project-URLs"])
       end
@@ -131,10 +131,10 @@ module Licensed
       # Returns best-effort homepage URL extracted from Project-URL(s) metadata
       # With priority given to Home > Repository > Source, otherwise the first URL
       def homepage_from_project_urls(project_urls)
-        return unless project_urls.is_a?(String)
-        return if project_urls.empty?
+        return if project_urls.to_s.empty?
 
         entries = project_urls
+          .to_s
           .split("\n")
           .map(&:strip)
           .reject(&:empty?)
