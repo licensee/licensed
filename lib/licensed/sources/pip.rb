@@ -123,7 +123,7 @@ module Licensed
       # Returns the package homepage from pip package metadata
       def homepage(package)
         home_page = package["Home-page"]
-        return home_page unless home_page.to_s.empty?
+        return home_page if home_page.is_a?(String) && !home_page.empty?
 
         homepage_from_project_urls(package["Project-URL"] || package["Project-URLs"])
       end
@@ -131,21 +131,24 @@ module Licensed
       # Returns best-effort homepage URL extracted from Project-URL(s) metadata
       # With priority given to Home > Repository > Source, otherwise the first URL
       def homepage_from_project_urls(project_urls)
-        return if project_urls.to_s.empty?
+        return unless project_urls.is_a?(String)
+        return if project_urls.empty?
 
         entries = project_urls
           .split("\n")
           .map(&:strip)
           .reject(&:empty?)
 
-        candidates = entries.map do |entry|
+        candidates = entries.filter_map do |entry|
           label, url = entry.split(",", 2).map { |value| value&.strip }
-          [label, url]
-        end.select { |_, url| url&.match?(%r{^https?://}) }
+          next unless url&.match?(%r{^https?://})
 
-        preferred = candidates.find { |label, _| label&.match?(/home/i) } ||
-          candidates.find { |label, _| label&.match?(/repo/i) } ||
-          candidates.find { |label, _| label&.match?(/source/i) }
+          [label.to_s, url]
+        end
+
+        preferred = candidates.find { |label, _| label.match?(/home/i) } ||
+          candidates.find { |label, _| label.match?(/repo/i) } ||
+          candidates.find { |label, _| label.match?(/source/i) }
         preferred&.last || candidates.first&.last
       end
 
