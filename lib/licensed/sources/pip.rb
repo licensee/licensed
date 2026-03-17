@@ -92,11 +92,12 @@ module Licensed
             if current_key
               current_value = a[current_key]
               continuation = pkg.strip
-              a[current_key] = if current_value.to_s.empty?
-                continuation
-              else
-                "#{current_value}\n#{continuation}"
-              end
+              a[current_key] =
+                if current_value.to_s.empty?
+                  continuation
+                else
+                  "#{current_value}\n#{continuation}"
+                end
             end
             next
           end
