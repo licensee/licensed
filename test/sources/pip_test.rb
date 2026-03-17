@@ -94,11 +94,11 @@ describe Licensed::Sources::Pip do
     assert_equal "https://example.com/home", homepage
   end
 
-  it "returns nil when Project-URLs is a non-string value" do
+  it "returns empty Home-page when Project-URLs is a non-string value" do
     package = Hash.new(0)
     package["Home-page"] = ""
 
-    assert_nil source.homepage(package)
+    assert_equal "", source.homepage(package)
   end
 
   it "finds lowercase dist-info directories for mixed-case package names" do

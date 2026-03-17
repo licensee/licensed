@@ -125,7 +125,7 @@ module Licensed
         home_page = package["Home-page"]
         return home_page unless home_page.to_s.empty?
 
-        homepage_from_project_urls(package["Project-URL"] || package["Project-URLs"])
+        homepage_from_project_urls(package["Project-URL"] || package["Project-URLs"]) || home_page
       end
 
       # Returns best-effort homepage URL extracted from Project-URL(s) metadata
