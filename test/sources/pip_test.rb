@@ -4,6 +4,103 @@ require "fileutils"
 require "tmpdir"
 
 describe Licensed::Sources::Pip do
+  class TestablePipSource < Licensed::Sources::Pip
+    public :parse_package_info, :homepage
+  end
+
+  let(:config) { Licensed::AppConfiguration.new({ "source_path" => Dir.pwd }) }
+  let(:source) { TestablePipSource.new(config) }
+
+  it "parses pip show continuation lines" do
+    parsed = source.parse_package_info(
+      <<~INFO
+        Name: azure-core
+        Project-URLs:
+          Repository, https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/core/azure-core
+      INFO
+    )
+
+    assert_equal(
+      "Repository, https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/core/azure-core",
+      parsed["Project-URLs"]
+    )
+  end
+
+  it "falls back to Project-URLs when Home-page is empty" do
+    homepage = source.homepage(
+      {
+        "Home-page" => "",
+        "Project-URLs" => "Repository, https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/core/azure-core"
+      }
+    )
+
+    assert_equal "https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/core/azure-core", homepage
+  end
+
+  it "prefers Home URL from Project-URLs even when listed last" do
+    homepage = source.homepage(
+      {
+        "Home-page" => "",
+        "Project-URLs" => [
+          "Documentation, https://learn.microsoft.com/azure/",
+          "Repository, https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/core/azure-core",
+          "Home, https://azure.microsoft.com/en-us/products/"
+        ].join("\n")
+      }
+    )
+
+    assert_equal "https://azure.microsoft.com/en-us/products/", homepage
+  end
+
+  it "prefers Repository URL when Home is not present" do
+    homepage = source.homepage(
+      {
+        "Home-page" => "",
+        "Project-URLs" => [
+          "Documentation, https://learn.microsoft.com/azure/",
+          "Repository, https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/core/azure-core",
+          "Source, https://example.com/source"
+        ].join("\n")
+      }
+    )
+
+    assert_equal "https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/core/azure-core", homepage
+  end
+
+  it "filters malformed and non-http Project-URLs entries" do
+    homepage = source.homepage(
+      {
+        "Home-page" => "",
+        "Project-URLs" => [
+          "NoCommaEntry",
+          "Documentation, ftp://learn.microsoft.com/azure/",
+          "Documentation, https://learn.microsoft.com/azure/",
+          "Source, not-a-url"
+        ].join("\n")
+      }
+    )
+
+    assert_equal "https://learn.microsoft.com/azure/", homepage
+  end
+
+  it "prefers Home-page when present" do
+    homepage = source.homepage(
+      {
+        "Home-page" => "https://example.com/home",
+        "Project-URLs" => "Repository, https://github.com/example/repo"
+      }
+    )
+
+    assert_equal "https://example.com/home", homepage
+  end
+
+  it "returns empty Home-page when Project-URLs is a non-string value" do
+    package = Hash.new(0)
+    package["Home-page"] = ""
+
+    assert_equal "", source.homepage(package)
+  end
+
   it "finds lowercase dist-info directories for mixed-case package names" do
     Dir.mktmpdir do |dir|
       dist_info = File.join(dir, "pyjwt-2.12.0.dist-info")

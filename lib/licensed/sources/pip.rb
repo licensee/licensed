@@ -20,7 +20,7 @@ module Licensed
             metadata: {
               "type"        => self.class.type,
               "summary"     => package["Summary"],
-              "homepage"    => package["Home-page"]
+              "homepage"    => homepage(package)
             }
           )
         end
@@ -83,14 +83,30 @@ module Licensed
       end
 
       # Returns a hash filled with package info parsed from the email-header formatted output
-      # returned by `pip show`
+      # returned by `pip show --verbose`, including continuation lines for multi-line fields.
       def parse_package_info(package_info)
+        current_key = nil
+
         package_info.lines.each_with_object(Hash.new(0)) do |pkg, a|
-          next if pkg.start_with?(/^\s/)
+          if pkg.match?(/^\s/)
+            if current_key
+              current_value = a[current_key]
+              continuation = pkg.strip
+              a[current_key] =
+                if current_value.to_s.empty?
+                  continuation
+                else
+                  "#{current_value}\n#{continuation}"
+                end
+            end
+            next
+          end
 
           k, v = pkg.split(":", 2)
           next if k.nil? || k.empty?
-          a[k.strip] = v&.strip
+
+          current_key = k.strip
+          a[current_key] = v&.strip
         end
       end
 
@@ -101,7 +117,39 @@ module Licensed
 
       # Returns the output from `pip show <package> <package> ...`
       def pip_show_command(package)
-        Licensed::Shell.execute(*pip_command, "--disable-pip-version-check", "show", package)
+        Licensed::Shell.execute(*pip_command, "--disable-pip-version-check", "show", "--verbose", package)
+      end
+
+      # Returns the package homepage from pip package metadata
+      def homepage(package)
+        home_page = package["Home-page"]
+        return home_page unless home_page.to_s.empty?
+
+        homepage_from_project_urls(package["Project-URL"] || package["Project-URLs"]) || home_page
+      end
+
+      # Returns best-effort homepage URL extracted from Project-URL(s) metadata
+      # With priority given to Home > Repository > Source, otherwise the first URL
+      def homepage_from_project_urls(project_urls)
+        return if project_urls.to_s.empty?
+
+        entries = project_urls
+          .to_s
+          .split("\n")
+          .map(&:strip)
+          .reject(&:empty?)
+
+        candidates = entries.filter_map do |entry|
+          label, url = entry.split(",", 2).map { |value| value&.strip }
+          next unless url&.match?(%r{^https?://})
+
+          [label.to_s, url]
+        end
+
+        preferred = candidates.find { |label, _| label.match?(/home/i) } ||
+          candidates.find { |label, _| label.match?(/repo/i) } ||
+          candidates.find { |label, _| label.match?(/source/i) }
+        preferred&.last || candidates.first&.last
       end
 
       def virtual_env_dir
