@@ -1,6 +1,6 @@
 ---
 name: octokit
-version: 9.2.0
+version: 10.0.0
 type: bundler
 summary: Ruby toolkit for working with the GitHub API
 homepage: https://github.com/octokit/octokit.rb
