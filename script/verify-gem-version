@@ -1,0 +1,46 @@
+#!/bin/bash
+
+set -euo pipefail
+
+git_description="$(git describe --tags)"
+if [ -z "$git_description" ]; then
+  echo "Unable to determine git description from git tags." >&2
+  exit 1
+fi
+echo "Git describe: ${git_description}"
+
+expected_version="$(ruby -Ilib -rlicensed/version -e 'puts Licensed::VERSION')"
+if [ -z "$expected_version" ]; then
+  echo "Unable to determine expected version from licensed source." >&2
+  exit 1
+fi
+echo "Expected version: ${expected_version}"
+
+shopt -s nullglob
+gems=(licensed-*.gem)
+
+if [ "${#gems[@]}" -ne 1 ]; then
+  echo "Expected exactly one built licensed gem, found ${#gems[@]}." >&2
+  exit 1
+fi
+
+expected_gem="licensed-${expected_version}.gem"
+if [ "${gems[0]}" != "$expected_gem" ]; then
+  echo "Expected built gem ${expected_gem}, found ${gems[0]}." >&2
+  exit 1
+fi
+echo "Built gem: ${gems[0]}"
+
+gem_version="$(ruby -rrubygems/package -e 'puts Gem::Package.new(ARGV.fetch(0)).spec.version' "${gems[0]}")"
+if [ "$gem_version" != "$expected_version" ]; then
+  echo "Expected gem metadata version ${expected_version}, found ${gem_version}." >&2
+  exit 1
+fi
+echo "Gem metadata version: ${gem_version}"
+
+source_version="$(ruby -Ilib -rlicensed/version -e 'puts Licensed::VERSION')"
+if [ "$source_version" != "$expected_version" ]; then
+  echo "Expected source version ${expected_version}, found ${source_version}." >&2
+  exit 1
+fi
+echo "Source version: ${source_version}"
