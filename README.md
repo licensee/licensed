@@ -94,7 +94,7 @@ To get started after checking out the repo, run
 
 You can also run `script/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then create a release on GitHub.
+To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, create a GitHub release from the matching `vX.Y.Z` tag.
 
 ### Adding a new source
 
