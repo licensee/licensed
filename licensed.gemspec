@@ -21,7 +21,8 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.required_ruby_version = ">= 3.1.0"
+  # Keep aligned with the minimum tested Ruby version in .github/workflows/test.yml
+  spec.required_ruby_version = ">= 3.3.0"
 
   spec.add_dependency "csv", "~> 3.3"
   spec.add_dependency "licensee", ">= 9.16", "< 11"
