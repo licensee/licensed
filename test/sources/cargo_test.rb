@@ -68,11 +68,10 @@ if Licensed::Shell.tool_available?("cargo")
 
     describe "cargo_metadata" do
       it "raises Licensed::Sources::Source::Error if the cargo JSON metadata can't be parsed" do
-        Licensed::Shell.stub(:execute, "") do
-          Dir.chdir fixtures do
-            assert_raises Licensed::Sources::Source::Error do
-              source.cargo_metadata
-            end
+        Licensed::Shell.stubs(:execute).returns("")
+        Dir.chdir fixtures do
+          assert_raises Licensed::Sources::Source::Error do
+            source.cargo_metadata
           end
         end
       end

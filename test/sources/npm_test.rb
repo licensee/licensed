@@ -106,10 +106,9 @@ if Licensed::Shell.tool_available?("npm")
 
       it "raises a Licensed::Sources::Source:Error if npm list returns invalid JSON" do
         Dir.chdir fixtures do
-          source.stub(:package_metadata_command, "") do
-            assert_raises Licensed::Sources::Source::Error do
-              source.dependencies
-            end
+          source.stubs(:package_metadata_command).returns("")
+          assert_raises Licensed::Sources::Source::Error do
+            source.dependencies
           end
         end
       end

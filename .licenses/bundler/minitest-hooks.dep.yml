@@ -1,0 +1,26 @@
+---
+name: minitest-hooks
+version: 1.5.4
+type: bundler
+summary: Around and before_all/after_all/around_all hooks for Minitest
+homepage: http://github.com/jeremyevans/minitest-hooks
+license: mit
+licenses:
+- sources: MIT-LICENSE
+  text: "Copyright (c) 2015-2026 Jeremy Evans and contributors\n\nPermission is hereby
+    granted, free of charge, to any person obtaining a copy\nof this software and
+    associated documentation files (the \"Software\"), to\ndeal in the Software without
+    restriction, including without limitation the\nrights to use, copy, modify, merge,
+    publish, distribute, sublicense, and/or\nsell copies of the Software, and to permit
+    persons to whom the Software is\nfurnished to do so, subject to the following
+    conditions:\n  \nThe above copyright notice and this permission notice shall be
+    included in\nall copies or substantial portions of the Software.\n   \nTHE SOFTWARE
+    IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING
+    BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR
+    PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL\nTHE AUTHORS BE LIABLE FOR ANY
+    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER \nIN AN ACTION OF CONTRACT, TORT OR
+    OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE
+    OR OTHER DEALINGS IN THE SOFTWARE.\n"
+- sources: README.rdoc
+  text: MIT
+notices: []

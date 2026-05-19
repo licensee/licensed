@@ -54,10 +54,9 @@ describe Licensed::Sources::Dep do
     end
 
     it "includes vendored dependencies from the go std library if go is not available" do
-      Licensed::Shell.stub(:tool_available?, false) do
-        Dir.chdir fixtures do
-          assert source.dependencies.any? { |d| d.name == "golang.org/x/net/http2/hpack" }
-        end
+      Licensed::Shell.stubs(:tool_available?).returns(false)
+      Dir.chdir fixtures do
+        assert source.dependencies.any? { |d| d.name == "golang.org/x/net/http2/hpack" }
       end
     end
   end

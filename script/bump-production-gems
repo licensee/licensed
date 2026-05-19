@@ -1,0 +1,15 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+bundle update --conservative \
+  csv \
+  licensee \
+  thor \
+  pathname-common_prefix \
+  tomlrb \
+  ruby-xxHash \
+  parallel \
+  reverse_markdown \
+  json \
+  ostruct
