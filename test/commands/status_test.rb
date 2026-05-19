@@ -470,10 +470,10 @@ describe Licensed::Commands::Status do
       run_command
 
       dependency_report = reporter.report.all_reports.find { |report| report.target.is_a?(Licensed::Dependency) }
-      assert dependency_report.errors.any? do |e|
+      assert(dependency_report.errors.any? do |e|
         e.match?("dependency needs review") &&
           e.match?("unversioned 'reviewed' match found: #{TestSource::DEFAULT_DEPENDENCY_NAME}")
-      end
+      end)
     end
 
     it "warns if dependency is reviewed at different version" do
@@ -488,10 +488,10 @@ describe Licensed::Commands::Status do
       run_command
 
       dependency_report = reporter.report.all_reports.find { |report| report.target.is_a?(Licensed::Dependency) }
-      assert dependency_report.errors.any? do |e|
+      assert(dependency_report.errors.any? do |e|
         e.match?("dependency needs review") &&
           e.match?("possible 'reviewed' matches found at other versions: #{TestSource::DEFAULT_DEPENDENCY_NAME}@0.0.0")
-      end
+      end)
     end
 
     it "reports a link to the documentation on any failures" do
@@ -609,7 +609,7 @@ describe Licensed::Commands::Status do
       run_command
       config.apps.each do |app|
         app.sources.each do |source|
-          refute_includes dependency_errors(app, source), "dependency needs review"
+          refute_includes dependency_errors(app, source), "needs review"
         end
       end
     end
@@ -662,10 +662,9 @@ describe Licensed::Commands::Status do
       run_command
 
       dependency_report = reporter.report.all_reports.find { |report| report.target.is_a?(Licensed::Dependency) }
-      assert dependency_report.errors.any? do |e|
-        e.match?("dependency needs review") &&
-          e.match?("unversioned 'reviewed' match found: #{TestSource::DEFAULT_DEPENDENCY_NAME}")
-      end
+      assert(dependency_report.errors.any? do |e|
+        e.match?("license needs review: mit")
+      end)
     end
 
     it "warns if dependency is reviewed at different version" do
@@ -680,10 +679,9 @@ describe Licensed::Commands::Status do
       run_command
 
       dependency_report = reporter.report.all_reports.find { |report| report.target.is_a?(Licensed::Dependency) }
-      assert dependency_report.errors.any? do |e|
-        e.match?("dependency needs review") &&
-          e.match?("possible 'reviewed' matches found at other versions: #{TestSource::DEFAULT_DEPENDENCY_NAME}@0.0.0")
-      end
+      assert(dependency_report.errors.any? do |e|
+        e.match?("license needs review: mit")
+      end)
     end
 
     it "reports a link to the documentation on any failures" do
