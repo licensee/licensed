@@ -4,9 +4,9 @@ multi-ecosystem-groups:
   all:
     schedule:
       interval: weekly
-      day: "monday"
+      day: "friday"
       time: "08:00"
-      timezone: "Etc/UTC"
+      timezone: "Europe/London"
 
 updates:
   - package-ecosystem: github-actions
