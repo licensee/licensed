@@ -1,6 +1,6 @@
 ---
 name: json
-version: 2.19.9
+version: 2.20.0
 type: bundler
 summary: JSON Implementation for Ruby
 homepage: https://github.com/ruby/json
@@ -60,6 +60,6 @@ notices:
       This file is adapted from https://github.com/jeaiii/itoa
       It is licensed under the MIT License
 
-    ext/json/ext/vendor/ryu.h::
-      This file is adapted from the Ryu algorithm by Ulf Adams https://github.com/ulfjack/ryu.
-      It is dual-licensed under Apache License 2.0 OR Boost Software License 1.0.
+    ext/json/ext/vendor/fast_float_parser.h::
+      This file is adapted from the Fast Float C++ library by The fast_float authors https://github.com/fastfloat/fast_float
+      It is licensed under the MIT License

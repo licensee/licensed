@@ -1,6 +1,6 @@
 ---
 name: i18n
-version: 1.14.8
+version: 1.15.2
 type: bundler
 summary: New wave Internationalization support for Ruby
 homepage: https://github.com/ruby-i18n/i18n
