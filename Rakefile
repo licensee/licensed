@@ -15,7 +15,7 @@ task :setup, [:arguments] do |task, args|
     # green
     puts "\033[32mRunning #{script}.\e[0m"
 
-    if Bundler.with_clean_env { system(script, force) }
+    if Bundler.with_unbundled_env { system(script, force) }
       # green
       puts "\033[32mCompleted #{script}.\e[0m"
     elsif $?.exitstatus == 127
