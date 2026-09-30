@@ -16,20 +16,21 @@ for fixture in $FIXTURES; do
   mkdir -p $fixture
   pushd $fixture >/dev/null
 
-  # fixture is already set up, use "-f" to force a refresh
-  if [ -e ".git" ]; then
-    continue
+  if [ ! -e ".git" ]; then
+    git init -q .
+    cp "$BASE_PATH/LICENSE" .
+    git add LICENSE
+    git commit -q -m "init"
   fi
 
-  git init -q .
-  cp $BASE_PATH/LICENSE .
-  git add LICENSE
-  git commit -q -m "init"
-
-  if [ -n "$SUBMODULE" ] ; then
-    git submodule add -q "$SUBMODULE" "vendor/$(basename $SUBMODULE)"
-    git submodule update --recursive --init -q
-    git add . && git commit -q -m "update submodule"
+  if [ -n "$SUBMODULE" ]; then
+    if [ ! -e "vendor/$(basename "$SUBMODULE")/.git" ]; then
+      git -c protocol.file.allow=always submodule add -q "$SUBMODULE" "vendor/$(basename "$SUBMODULE")"
+    fi
+    git -c protocol.file.allow=always submodule update --recursive --init -q
+    if ! git diff --cached --quiet; then
+      git commit -q -m "update submodule"
+    fi
   fi
 
   echo "$(basename $fixture) created"
