@@ -1,8 +1,10 @@
 #!/bin/bash
 set -e
 
-# setup test fixtures
 BASE_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+. "$BASE_PATH/script/development-env"
+
+# setup test fixtures
 cd $BASE_PATH/test/fixtures/git_submodule
 
 if [ "$1" == "-f" ]; then
@@ -24,8 +26,9 @@ for fixture in $FIXTURES; do
   fi
 
   if [ -n "$SUBMODULE" ]; then
-    if [ ! -e "vendor/$(basename "$SUBMODULE")/.git" ]; then
-      git -c protocol.file.allow=always submodule add -q "$SUBMODULE" "vendor/$(basename "$SUBMODULE")"
+    SUBMODULE_PATH="vendor/$(basename "$SUBMODULE")"
+    if ! git ls-files --stage -- "$SUBMODULE_PATH" | grep -q '^160000 '; then
+      git -c protocol.file.allow=always submodule add -q "$SUBMODULE" "$SUBMODULE_PATH"
     fi
     git -c protocol.file.allow=always submodule update --recursive --init -q
     if ! git diff --cached --quiet; then

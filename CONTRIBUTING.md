@@ -35,7 +35,7 @@ Use the source tool versions tested in [.github/workflows/test.yml](.github/work
 
 `script/cibuild` runs the complete test suite, lint, and gem packaging. Unlike the individual CI jobs, it includes source suites currently disabled in CI. The Gradle fixtures have been verified locally with Gradle 8.5 and Java 21. Python fixtures require their populated virtual environments; select the fixture interpreter with `PIPENV_PYTHON` when multiple Python versions are installed.
 
-For persistent machine-local tool selection, put exported POSIX shell variables such as `PATH`, `JAVA_HOME`, and `PIPENV_PYTHON` in `.licensed-dev-env` at the repository root. `script/cibuild` sources this optional, gitignored file before running its checks. Without it, the script uses the calling environment as before. Keep machine-specific runtime paths out of commits.
+For persistent machine-local tool selection, put exported POSIX shell variables such as `PATH`, `JAVA_HOME`, and `PIPENV_PYTHON` in `.licensed-dev-env` at the repository root. The build, setup, test, and individual source setup scripts load this optional, gitignored file before checking tools or running commands, so fixture preparation and tests use the same configuration. Without it, the scripts use the calling environment as before. Keep machine-specific runtime paths out of commits.
 
 #### Adding a new Dependency Source
 

@@ -1,13 +1,15 @@
 #!/bin/bash
 set -e
 
+BASE_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+. "$BASE_PATH/script/development-env"
+
 if [ -z "$(which bundle)" ]; then
   echo "A local bundler installation is required for bundler development." >&2
   exit 127
 fi
 
 # setup test fixtures
-BASE_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd $BASE_PATH/test/fixtures/bundler
 
 # unset any pre-existing gemfile when installing test fixtures

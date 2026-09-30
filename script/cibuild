@@ -3,9 +3,7 @@
 set -e
 
 BASE_PATH="$(CDPATH= cd "$(dirname "$0")/.." && pwd)"
-if [ -f "$BASE_PATH/.licensed-dev-env" ]; then
-	. "$BASE_PATH/.licensed-dev-env"
-fi
+. "$BASE_PATH/script/development-env"
 
 bundle exec rake test
 bundle exec rubocop -S -D
