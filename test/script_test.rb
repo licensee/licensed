@@ -14,6 +14,56 @@ describe "Development scripts" do
     target
   end
 
+  def run_setup(exit_statuses)
+    Dir.mktmpdir do |directory|
+      File.write(File.join(directory, "setup-test.gemspec"), <<~GEMSPEC)
+        Gem::Specification.new do |spec|
+          spec.name = "setup-test"
+          spec.version = "0.0.0"
+        end
+      GEMSPEC
+      scripts = File.join(directory, "script/source-setup")
+      FileUtils.mkdir_p(scripts)
+      exit_statuses.each do |name, exit_status|
+        script = File.join(scripts, name)
+        File.write(script, "#!/bin/sh\nprintf '%s:%s\\n' '#{name}' \"$1\" >> attempts\nexit #{exit_status}\n")
+        File.chmod(0o755, script)
+      end
+
+      output, error, status = Open3.capture3(
+        { "BUNDLE_GEMFILE" => File.join(root, "Gemfile") },
+        "bundle", "exec", "rake", "--rakefile", File.join(root, "Rakefile"), "setup[-f]",
+        chdir: directory
+      )
+      attempts = File.join(directory, "attempts")
+      attempted_scripts = File.file?(attempts) ? File.readlines(attempts, chomp: true) : []
+      yield output, error, status, attempted_scripts
+    end
+  end
+
+  it "skips unavailable setup tools without failing or skipping later scripts" do
+    run_setup("01_unavailable" => 127, "02_success" => 0) do |output, error, status, attempts|
+      assert status.success?, "#{output}\n#{error}"
+      assert_equal ["01_unavailable:-f", "02_success:-f"], attempts
+      assert_includes output, "Skipped script/source-setup/01_unavailable."
+      assert_includes output, "Completed script/source-setup/02_success."
+      refute_includes error, "Setup failed:"
+    end
+  end
+
+  it "attempts every setup script before exiting with all failures summarized" do
+    exit_statuses = { "01_failure" => 1, "02_unavailable" => 127, "03_failure" => 42, "04_success" => 0 }
+    run_setup(exit_statuses) do |output, error, status, attempts|
+      refute status.success?
+      assert_equal 1, status.exitstatus
+      assert_equal exit_statuses.keys.map { |name| "#{name}:-f" }, attempts
+      assert_includes output, "Skipped script/source-setup/02_unavailable."
+      assert_includes output, "Completed script/source-setup/04_success."
+      summary = error.lines.find { |line| line.start_with?("Setup failed:") }
+      assert_equal "Setup failed: script/source-setup/01_failure, script/source-setup/03_failure", summary&.strip
+    end
+  end
+
   it "loads local settings before running build, setup, tests, or source preparation" do
     Dir.mktmpdir do |directory|
       copy_script(directory, "script/development-env")
