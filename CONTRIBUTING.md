@@ -49,20 +49,25 @@ Pull requests that include a new dependency source must also
 ## Releasing
 If you are the current maintainer of this gem:
 
+Release versions are derived from Git tags, not manually bumped in `lib/licensed/version.rb`.
+At an exact tag such as `v5.1.1`, the gem builds as `5.1.1`. Commits after a release tag
+infer the next patch version. To test a minor or major release's exact version, create
+the intended release tag locally on the candidate commit before building.
+
 1. Create a branch for the release: git checkout -b cut-release-xx.xx.xx
 2. Make sure your local dependencies are up to date: `script/bootstrap`
 3. Ensure that tests are green: `bundle exec rake test`
-4. Bump gem version in lib/licensed/version.rb.
+4. Choose the release version and corresponding Git tag; do not edit the version constant.
 5. Update [`CHANGELOG.md`](CHANGELOG.md)
-6. Make a PR to github/licensed.
+6. Make a PR to licensee/licensed.
 7. Build a local gem: bundle exec rake build
 8. Test the gem:
    1. Bump the Gemfile and Gemfile.lock versions for an app which relies on this gem
    2. Install the new gem locally
    3. Test behavior locally, branch deploy, whatever needs to happen
-9. Merge github/licensed PR
-10. Create a new [github/licensed release](https://github.com/github/licensed/releases)
-   - Set the release name and tag to the release version - `x.xx.x`
+9. Merge licensee/licensed PR
+10. Create a new [licensee/licensed release](https://github.com/licensee/licensed/releases)
+   - Set the release name and tag to the release version, using a tag such as `v5.1.1` on the intended release commit.
    - Set the release body to the changelog entries for the release
 
 The following steps will happen automatically from a GitHub Actions workflow
