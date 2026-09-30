@@ -2,4 +2,7 @@
 
 set -e
 
+BASE_PATH="$(CDPATH= cd "$(dirname "$0")/.." && pwd)"
+. "$BASE_PATH/script/development-env"
+
 bundle exec rake setup["$@"]

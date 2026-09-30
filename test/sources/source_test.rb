@@ -19,7 +19,7 @@ describe Licensed::Sources::Source do
     end
 
     it "does not return ignored dependencies" do
-      config.ignore("type" => "test", "name" => "dependency")
+      config.ignore({ "type" => "test", "name" => "dependency" })
       assert_empty source.dependencies
     end
 

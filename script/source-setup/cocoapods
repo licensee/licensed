@@ -1,8 +1,10 @@
 #!/bin/bash
 set -e
 
-# setup test fixtures
 BASE_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+. "$BASE_PATH/script/development-env"
+
+# setup test fixtures
 cd "$BASE_PATH/test/fixtures/cocoapods"
 
 if [ "$1" == "-f" ]; then

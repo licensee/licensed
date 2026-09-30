@@ -1,13 +1,15 @@
 #!/bin/bash
 set -e
 
+BASE_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+. "$BASE_PATH/script/development-env"
+
 if [ -z "$(which php)" ]; then
   echo "A local php installation is required for php development." >&2
   exit 127
 fi
 
 # setup test fixtures
-BASE_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd $BASE_PATH/test/fixtures/composer
 
 if [ "$1" == "-f" ]; then

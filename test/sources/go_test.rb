@@ -166,7 +166,7 @@ if Licensed::Shell.tool_available?("go")
           Dir.chdir fixtures do
             dep = source.dependencies.detect { |d| d.name == "github.com/hashicorp/golang-lru" }
             assert dep
-            assert dep.errors.any? { |e| e =~ /cannot find package.*github\.com\/hashicorp\/golang-lru/im }
+            assert dep.errors.any? { |e| e =~ /cannot find (?:package|module providing package).*github\.com\/hashicorp\/golang-lru/im }
           end
         end
       end

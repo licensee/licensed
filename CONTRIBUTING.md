@@ -27,6 +27,16 @@ Here are a few things you can do that will increase the likelihood of your pull 
 - Keep your change as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.
 - Write a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
 
+#### Running tests locally
+
+Use the source tool versions tested in [.github/workflows/test.yml](.github/workflows/test.yml), rather than assuming the newest releases are compatible with the fixtures. Install each source's dependencies with `script/source-setup/<source>` before running `script/test <source>`. `script/test core` runs the core and shared source-helper tests without requiring source toolchains.
+
+`script/setup` attempts all source setup scripts, skips unavailable tools, and exits unsuccessfully if any setup script fails. Fix the reported failures before running the full suite. Installers may rewrite tracked fixture lockfiles; review those changes separately from your code changes.
+
+`script/cibuild` runs the complete test suite, lint, and gem packaging. Unlike the individual CI jobs, it includes source suites currently disabled in CI. The Gradle fixtures have been verified locally with Gradle 8.5 and Java 21. Python fixtures require their populated virtual environments; select the fixture interpreter with `PIPENV_PYTHON` when multiple Python versions are installed.
+
+For persistent machine-local tool selection, put exported POSIX shell variables such as `PATH`, `JAVA_HOME`, and `PIPENV_PYTHON` in `.licensed-dev-env` at the repository root. The build, setup, test, and individual source setup scripts load this optional, gitignored file before checking tools or running commands, so fixture preparation and tests use the same configuration. Without it, the scripts use the calling environment as before. Keep machine-specific runtime paths out of commits.
+
 #### Adding a new Dependency Source
 
 Pull requests that include a new dependency source must also

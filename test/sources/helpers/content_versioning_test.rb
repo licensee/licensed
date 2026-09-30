@@ -2,7 +2,7 @@
 require "test_helper"
 
 describe Licensed::Sources::ContentVersioning do
-  let(:fixtures) { File.expand_path("../../../fixtures/command", __FILE__) }
+  let(:fixtures) { File.expand_path("../../../fixtures/config", __FILE__) }
   let(:config) { Licensed::AppConfiguration.new({ "source_path" => Dir.pwd }) }
   let(:helper) do
     obj = mock.extend Licensed::Sources::ContentVersioning
@@ -95,8 +95,8 @@ describe Licensed::Sources::ContentVersioning do
 
     it "is agnostic to the order of paths provided" do
       Dir.chdir fixtures do
-        assert_equal helper.contents_hash(["bower.yml", "bundler.yml", "cabal.yml"]),
-                     helper.contents_hash(["cabal.yml", "bundler.yml", "bower.yml"])
+        assert_equal helper.contents_hash(["config.yml", "root.yml", "root_at_configuration.yml"]),
+                     helper.contents_hash(["root_at_configuration.yml", "root.yml", "config.yml"])
       end
     end
 

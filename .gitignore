@@ -1,4 +1,5 @@
 /.bundle/
+/.licensed-dev-env
 /.yardoc
 /_yardoc/
 /coverage/

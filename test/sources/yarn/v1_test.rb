@@ -28,7 +28,7 @@ if Licensed::Shell.tool_available?("yarn")
       it "is false if yarn.lock does not exist" do
         Dir.mktmpdir do |dir|
           Dir.chdir(dir) do
-            File.write "package.json", ""
+            File.write "package.json", "{}"
             refute source.enabled?
           end
         end
