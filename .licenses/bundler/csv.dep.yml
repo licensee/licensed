@@ -1,6 +1,6 @@
 ---
 name: csv
-version: 3.3.5
+version: 3.3.6
 type: bundler
 summary: CSV Reading and Writing
 homepage: https://github.com/ruby/csv
@@ -45,5 +45,5 @@ licenses:
   text: |-
     The gem is available as open source under the terms of the [2-Clause BSD License](https://opensource.org/licenses/BSD-2-Clause).
 
-    See LICENSE.txt for details.
+    See [LICENSE.txt](LICENSE.txt) for details.
 notices: []

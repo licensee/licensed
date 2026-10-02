@@ -1,6 +1,6 @@
 ---
 name: rubocop-rails
-version: 2.36.0
+version: 2.38.0
 type: bundler
 summary: Automatic Rails code style checking tool.
 homepage: https://github.com/rubocop/rubocop-rails

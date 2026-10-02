@@ -1,6 +1,6 @@
 ---
 name: io-console
-version: 0.8.2
+version: 0.9.4
 type: bundler
 summary: Console interface
 homepage: https://github.com/ruby/io-console

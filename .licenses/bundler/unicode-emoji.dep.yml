@@ -1,6 +1,6 @@
 ---
 name: unicode-emoji
-version: 4.2.0
+version: 4.3.0
 type: bundler
 summary: Emoji data and regex
 homepage: https://github.com/janlelis/unicode-emoji
@@ -8,7 +8,7 @@ license: mit
 licenses:
 - sources: MIT-LICENSE.txt
   text: |
-    Copyright (c) 2017-2024 Jan Lelis, https://janlelis.com
+    Copyright (c) 2017-2026 Jan Lelis, https://janlelis.com
 
     Permission is hereby granted, free of charge, to any person obtaining
     a copy of this software and associated documentation files (the
