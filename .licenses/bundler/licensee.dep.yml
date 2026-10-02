@@ -1,6 +1,6 @@
 ---
 name: licensee
-version: 10.0.0
+version: 10.1.0
 type: bundler
 summary: A Ruby Gem to detect open source project licenses
 homepage: https://github.com/licensee/licensee
