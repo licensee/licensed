@@ -26,6 +26,38 @@ describe Licensed::Sources::Pip do
     )
   end
 
+  it "does not parse unindented license text as package metadata" do
+    parsed = source.parse_package_info(
+      <<~INFO
+        Name: scipy
+        Version: 1.9.2
+        Summary: Scientific computing
+        Home-page: https://scipy.org/
+        License: Package license
+
+        Name: bundled-library
+        Version: 1.0
+        Summary: Bundled library
+        Home-page: https://example.com/bundled-library
+        Location: bundled/library
+        License: Bundled license
+        Name: another-bundled-library
+        Location: /venv/lib/python3.11/site-packages
+        Requires: numpy
+        Project-URLs:
+          Repository, https://github.com/scipy/scipy
+      INFO
+    )
+
+    assert_equal "scipy", parsed["Name"]
+    assert_equal "1.9.2", parsed["Version"]
+    assert_equal "Scientific computing", parsed["Summary"]
+    assert_equal "https://scipy.org/", parsed["Home-page"]
+    assert_equal "/venv/lib/python3.11/site-packages", parsed["Location"]
+    assert_equal "numpy", parsed["Requires"]
+    assert_equal "Repository, https://github.com/scipy/scipy", parsed["Project-URLs"]
+  end
+
   it "falls back to Project-URLs when Home-page is empty" do
     homepage = source.homepage(
       {
