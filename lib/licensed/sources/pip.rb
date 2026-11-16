@@ -85,6 +85,9 @@ module Licensed
       # Returns a hash filled with package info parsed from the email-header formatted output
       # returned by `pip show --verbose`, including continuation lines for multi-line fields.
       def parse_package_info(package_info)
+        # License text can contain unindented metadata-like headers. pip prints Location
+        # after the license field; use the last occurrence in case the license includes one.
+        package_info = package_info.sub(/^License:.*(?=^Location:)/m, "")
         current_key = nil
 
         package_info.lines.each_with_object(Hash.new(0)) do |pkg, a|
