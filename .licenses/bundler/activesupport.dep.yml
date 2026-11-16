@@ -1,6 +1,6 @@
 ---
 name: activesupport
-version: 8.1.4
+version: 8.1.4.1
 type: bundler
 summary: A toolkit of support libraries and Ruby core extensions extracted from the
   Rails framework.
