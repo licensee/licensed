@@ -1,6 +1,6 @@
 ---
 name: nokogiri
-version: 1.19.4
+version: 1.19.5
 type: bundler
 summary: Nokogiri (鋸) makes it easy and painless to work with XML and HTML from Ruby.
 homepage: https://nokogiri.org
@@ -29,8 +29,8 @@ licenses:
     \ * [Native WindowsⓇ platform releases (\"x64-mingw-ucrt\")](#native-windows%E2%93%A1-platform-releases-x64-mingw-ucrt)\n
     \ * [JavaⓇ (JRuby) platform release (\"java\")](#java%E2%93%A1-jruby-platform-release-java)\n-
     [Appendix: Dependencies' License Texts](#appendix-dependencies-license-texts)\n
-    \ * [libgumbo](#libgumbo)\n  * [libxml2](#libxml2)\n  * [libxslt](#libxslt)\n
-    \ * [zlib](#zlib)\n  * [libiconv](#libiconv)\n  * [isorelax:isorelax](#isorelaxisorelax)\n
+    \ * [hashmap.c](#hashmapc)\n  * [libgumbo](#libgumbo)\n  * [libxml2](#libxml2)\n
+    \ * [libxslt](#libxslt)\n  * [zlib](#zlib)\n  * [libiconv](#libiconv)\n  * [isorelax:isorelax](#isorelaxisorelax)\n
     \ * [net.sf.saxon:Saxon-HE](#netsfsaxonsaxon-he)\n  * [net.sourceforge.htmlunit:neko-htmlunit](#netsourceforgehtmlunitneko-htmlunit)\n
     \ * [nu.validator:jing](#nuvalidatorjing)\n  * [org.nokogiri:nekodtd](#orgnokogirinekodtd)\n
     \ * [org.xmlresolver:xmlresolver](#orgxmlresolverxmlresolver)\n  * [xalan:serializer
@@ -81,7 +81,22 @@ licenses:
     section contains a subsection for each potentially-distributed dependency, which
     includes the name of the license and the license text.\n\nPlease see previous
     sections to understand which of these potential dependencies is actually distributed
-    in the gem file you're downloading and using.\n\n\n### libgumbo\n\nApache 2.0\n\nhttps://github.com/sparklemotion/nokogiri/blob/main/gumbo-parser/src/README.md\n\n\n
+    in the gem file you're downloading and using.\n\n\n### hashmap.c\n\nMIT\n\nhttps://github.com/tidwall/hashmap.c/blob/master/LICENSE\n\n
+    \   The MIT License (MIT)\n\n    Copyright (c) 2020 Joshua J Baker\n\n    Permission
+    is hereby granted, free of charge, to any person obtaining a copy of\n    this
+    software and associated documentation files (the \"Software\"), to deal in\n    the
+    Software without restriction, including without limitation the rights to\n    use,
+    copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\n
+    \   the Software, and to permit persons to whom the Software is furnished to do
+    so,\n    subject to the following conditions:\n\n    The above copyright notice
+    and this permission notice shall be included in all\n    copies or substantial
+    portions of the Software.\n\n    THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY
+    OF ANY KIND, EXPRESS OR\n    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+    OF MERCHANTABILITY, FITNESS\n    FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+    IN NO EVENT SHALL THE AUTHORS OR\n    COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+    DAMAGES OR OTHER LIABILITY, WHETHER\n    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+    ARISING FROM, OUT OF OR IN\n    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+    DEALINGS IN THE SOFTWARE.\n\n\n### libgumbo\n\nApache 2.0\n\nhttps://github.com/sparklemotion/nokogiri/blob/main/gumbo-parser/src/README.md\n\n\n
     \                                    Apache License\n                               Version
     2.0, January 2004\n                            http://www.apache.org/licenses/\n\n
     \      TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n\n       1.
